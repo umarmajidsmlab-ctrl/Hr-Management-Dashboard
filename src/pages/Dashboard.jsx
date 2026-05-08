@@ -146,7 +146,7 @@ const Dashboard = () => {
       </div>
 
       <div className="row g-4 mb-4">
-        <div className="col-12 col-md-6 col-lg-2-4" style={{ width: '20%' }}>
+        <div className="col-12 col-sm-6 col-xl">
           <StatCard 
             title="Total Employees" 
             value={kpis.total} 
@@ -155,7 +155,7 @@ const Dashboard = () => {
             color="#4f46e5" 
           />
         </div>
-        <div className="col-12 col-md-6 col-lg-2-4" style={{ width: '20%' }}>
+        <div className="col-12 col-sm-6 col-xl">
           <StatCard 
             title="Present Today" 
             value={kpis.active} 
@@ -164,7 +164,7 @@ const Dashboard = () => {
             color="#10b981" 
           />
         </div>
-        <div className="col-12 col-md-6 col-lg-2-4" style={{ width: '20%' }}>
+        <div className="col-12 col-sm-6 col-xl">
           <StatCard 
             title="On Leave" 
             value={kpis.onLeave} 
@@ -173,7 +173,7 @@ const Dashboard = () => {
             color="#f59e0b" 
           />
         </div>
-        <div className="col-12 col-md-6 col-lg-2-4" style={{ width: '20%' }}>
+        <div className="col-12 col-sm-6 col-xl">
           <StatCard 
             title="Open Jobs" 
             value={kpis.openJobs} 
@@ -182,7 +182,7 @@ const Dashboard = () => {
             color="#0ea5e9" 
           />
         </div>
-        <div className="col-12 col-md-6 col-lg-2-4" style={{ width: '20%' }}>
+        <div className="col-12 col-sm-6 col-xl">
           <StatCard 
             title="Pending Leaves" 
             value={kpis.pending} 
@@ -223,7 +223,7 @@ const Dashboard = () => {
       </div>
 
       <div className="row g-4">
-        <div className="col-12 col-lg-4">
+        <div className="col-12 col-md-6 col-lg-4">
           <div className="card p-4">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h6 className="fw-bold mb-0">Recent Joiners</h6>
@@ -236,10 +236,10 @@ const Dashboard = () => {
                     <img src={emp.avatar} alt={emp.name} className="rounded-circle me-3" width="40" height="40" style={{objectFit: 'cover'}}/>
                     <div>
                       <p className="mb-0 fw-bold small">{emp.name}</p>
-                      <p className="mb-0 text-muted x-small">{emp.role}</p>
+                      <p className="mb-0 text-muted x-small text-truncate" style={{maxWidth: '120px'}}>{emp.role}</p>
                     </div>
                   </div>
-                  <p className="mb-0 text-muted small">{formatDate(emp.joinDate)}</p>
+                  <p className="mb-0 text-muted small text-nowrap">{formatDate(emp.joinDate)}</p>
                 </div>
               ))}
               {state.employees.length === 0 && <p className="text-muted small">No employees found.</p>}
@@ -247,7 +247,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-12 col-lg-4">
+        <div className="col-12 col-md-6 col-lg-4">
           <div className="card p-4">
             <h6 className="fw-bold mb-4">Top Departments</h6>
             {departmentData.map((dept, index) => (
@@ -269,7 +269,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-12 col-lg-4">
+        <div className="col-12 col-md-12 col-lg-4">
           <div className="card p-4 h-100">
             <h6 className="fw-bold mb-4">Upcoming Birthdays</h6>
             <div className="list-group list-group-flush">
@@ -286,7 +286,7 @@ const Dashboard = () => {
                     <p className="mb-0 text-muted x-small">Upcoming</p>
                   </div>
                   <div className="ms-auto">
-                    <span className="badge bg-light text-dark fw-normal">{formatDate(emp.birthday)}</span>
+                    <span className="badge bg-light text-dark fw-normal small">{formatDate(emp.birthday)}</span>
                   </div>
                 </div>
               ))}

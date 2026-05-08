@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { User, Mail, Phone, MapPin, Briefcase, Camera, Edit2 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -17,6 +17,23 @@ const Profile = () => {
     bio: 'Experienced HR Manager with over 10 years of experience in talent acquisition and employee relations.',
     avatar: 'https://i.pravatar.cc/150?u=admin'
   });
+
+  const fileInputRef = useRef(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, avatar: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -43,9 +60,21 @@ const Profile = () => {
         <div className="col-12 col-lg-4">
           <div className="card border-0 p-4 text-center h-100">
             <div className="position-relative d-inline-block mx-auto mb-3">
+              <input 
+                type="file" 
+                ref={fileInputRef} 
+                className="d-none" 
+                accept="image/*" 
+                onChange={handleImageChange} 
+              />
               <img src={formData.avatar} alt="Profile" className="rounded-circle" width="120" height="120" style={{objectFit: 'cover'}} />
               {isEditing && (
-                <button className="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 p-2" title="Change Photo">
+                <button 
+                  className="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 p-2" 
+                  title="Change Photo"
+                  onClick={triggerFileInput}
+                  type="button"
+                >
                   <Camera size={16} />
                 </button>
               )}

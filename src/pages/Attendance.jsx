@@ -48,6 +48,7 @@ const Attendance = () => {
     },
     scales: {
       y: { grid: { borderDash: [5, 5], drawBorder: false } },
+
       x: { grid: { display: false } }
     }
   };
@@ -74,7 +75,7 @@ const Attendance = () => {
     }
     const emp = state.employees.find(e => e.id === currentAtt.employeeId);
     const dataToSave = { ...currentAtt, employeeName: emp ? emp.name : 'Unknown' };
-    
+
     if (isEditing) {
       updateAttendance(dataToSave);
     } else {
@@ -150,7 +151,7 @@ const Attendance = () => {
                   <tr key={att.id}>
                     <td className="ps-4">
                       <div className="d-flex align-items-center">
-                        {emp ? <img src={emp.avatar} alt={emp.name} className="rounded-circle me-3" width="36" height="36" style={{objectFit:'cover'}} /> : <div className="bg-light rounded-circle me-3" style={{width: 36, height: 36}}></div>}
+                        {emp ? <img src={emp.avatar} alt={emp.name} className="rounded-circle me-3" width="36" height="36" style={{ objectFit: 'cover' }} /> : <div className="bg-light rounded-circle me-3" style={{ width: 36, height: 36 }}></div>}
                         <div>
                           <p className="mb-0 fw-bold small">{att.employeeName}</p>
                           <p className="mb-0 text-muted x-small">{att.employeeId}</p>
@@ -202,26 +203,26 @@ const Attendance = () => {
                 <div className="row g-3">
                   <div className="col-12">
                     <label className="form-label small fw-bold">Employee *</label>
-                    <select className="form-select" value={currentAtt.employeeId} onChange={(e) => setCurrentAtt({...currentAtt, employeeId: e.target.value})} disabled={isEditing} required>
+                    <select className="form-select" value={currentAtt.employeeId} onChange={(e) => setCurrentAtt({ ...currentAtt, employeeId: e.target.value })} disabled={isEditing} required>
                       <option value="">Select Employee</option>
                       {state.employees.map(e => <option key={e.id} value={e.id}>{e.name} ({e.id})</option>)}
                     </select>
                   </div>
                   <div className="col-6">
                     <label className="form-label small fw-bold">Check In</label>
-                    <input type="text" className="form-control" value={currentAtt.checkIn} onChange={(e) => setCurrentAtt({...currentAtt, checkIn: e.target.value})} required />
+                    <input type="text" className="form-control" value={currentAtt.checkIn} onChange={(e) => setCurrentAtt({ ...currentAtt, checkIn: e.target.value })} required />
                   </div>
                   <div className="col-6">
                     <label className="form-label small fw-bold">Check Out</label>
-                    <input type="text" className="form-control" value={currentAtt.checkOut} onChange={(e) => setCurrentAtt({...currentAtt, checkOut: e.target.value})} required />
+                    <input type="text" className="form-control" value={currentAtt.checkOut} onChange={(e) => setCurrentAtt({ ...currentAtt, checkOut: e.target.value })} required />
                   </div>
                   <div className="col-6">
                     <label className="form-label small fw-bold">Work Hours</label>
-                    <input type="text" className="form-control" value={currentAtt.workHours} onChange={(e) => setCurrentAtt({...currentAtt, workHours: e.target.value})} />
+                    <input type="text" className="form-control" value={currentAtt.workHours} onChange={(e) => setCurrentAtt({ ...currentAtt, workHours: e.target.value })} />
                   </div>
                   <div className="col-6">
                     <label className="form-label small fw-bold">Status</label>
-                    <select className="form-select" value={currentAtt.status} onChange={(e) => setCurrentAtt({...currentAtt, status: e.target.value})}>
+                    <select className="form-select" value={currentAtt.status} onChange={(e) => setCurrentAtt({ ...currentAtt, status: e.target.value })}>
                       <option>On Time</option>
                       <option>Late</option>
                       <option>Early</option>

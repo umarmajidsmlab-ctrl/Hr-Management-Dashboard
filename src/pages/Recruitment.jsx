@@ -78,21 +78,22 @@ const Recruitment = () => {
           <h4 className="fw-bold mb-1">Recruitment</h4>
           <p className="text-muted small mb-0">Manage job openings and candidate pipeline.</p>
         </div>
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-2 flex-wrap mt-3 mt-md-0">
           <button className="btn btn-outline-secondary d-flex align-items-center gap-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#quickEmployeeModal">
             <Users size={18} />
-            <span>Add Employee</span>
+            <span className="d-none d-sm-inline">Add Employee</span>
           </button>
           <button className="btn btn-outline-primary d-flex align-items-center gap-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#candidateModal">
             <UserPlus size={18} />
-            <span>Add Candidate</span>
+            <span className="d-none d-sm-inline">Add Candidate</span>
           </button>
           <button className="btn btn-primary d-flex align-items-center gap-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#jobModal" onClick={() => {
             setIsEditingJob(false);
             setCurrentJob({ title: '', department: 'IT', location: '', type: 'Full-time', status: 'Open', description: '' });
           }}>
             <Briefcase size={18} />
-            <span>Create Job</span>
+            <span className="d-none d-sm-inline">Create Job</span>
+            <span className="d-inline d-sm-none">Job</span>
           </button>
         </div>
       </div>

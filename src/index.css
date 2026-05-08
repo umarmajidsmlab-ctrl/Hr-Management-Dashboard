@@ -248,5 +248,15 @@ body {
   }
   .main-content {
     margin-left: 0 !important;
+    padding: 15px; /* Reduced padding on mobile */
+  }
+  .top-navbar {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .card {
+    padding: 15px !important;
   }
 }
